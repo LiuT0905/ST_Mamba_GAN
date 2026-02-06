@@ -2,8 +2,6 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 
-
-# Taken from https://discuss.pytorch.org/t/is-there-any-layer-like-tensorflows-space-to-depth-function/3487/14
 class DepthToSpace(nn.Module):
     def __init__(self, block_size):
         super().__init__()
@@ -93,7 +91,6 @@ class ChannelAttention(nn.Module):
         self.input_channels = input_channels
         self.avg_pool = nn.AdaptiveAvgPool2d(1)
         self.max_pool = nn.AdaptiveMaxPool2d(1)
-        #  https://github.com/luuuyi/CBAM.PyTorch/blob/master/model/resnet_cbam.py
         #  uses Convolutions instead of Linear
         self.MLP = nn.Sequential(
             Flatten(),
